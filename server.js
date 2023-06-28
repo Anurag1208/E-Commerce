@@ -8,14 +8,14 @@ import productRoute from './routes/productRoute.js'
 import cors from 'cors';
 import path from 'path';
 import {fileURLToPath} from 'url';
-import {MongoClient} from 'mongodb'; //
+// import {MongoClient} from 'mongodb'; //
 
 // rest object...
 const app = express();
 // environment variable setup
 dotenv.config();
 //database connected...
-// connectDB();   //
+connectDB();  
 
 //esmodulefix
 const __filename = fileURLToPath(import.meta.url);
@@ -41,16 +41,16 @@ app.use('*', function(req,res){
 })
 
 // Port and database...
-const PORT = process.env.PORT;
-const uri = process.env.MONGO_DB_URL; //
-const client = new MOngoClient(uri); //
-client.connect(err => {
-  if(err){consele.log(err);}
-  app.listen(PORT, () => {
-        console.log("listening for requests");
-    });
-});
-
-// app.listen(process.env.PORT || 8080, () => {
-//   console.log(`Server is running on port ${process.env.PORT}`);
+// const PORT = process.env.PORT;
+// const uri = process.env.MONGO_DB_URL; //
+// const client = new MOngoClient(uri); //
+// client.connect(err => {
+//   if(err){consele.log(err);}
+//   app.listen(PORT, () => {
+//         console.log("listening for requests");
+//     });
 // });
+
+app.listen(process.env.PORT || 8080, () => {
+  console.log(`Server is running on port ${process.env.PORT}`);
+});
